@@ -42,6 +42,17 @@ function clickTheDrums(key) {
   }
 }
 
+//animation function
+
+function animatingButton(key) {
+  var activeButton = document.querySelector('.' + key);
+
+  activeButton.classList.add('pressed');
+  setTimeout(function () {
+    activeButton.classList.remove('pressed');
+  }, 100);
+}
+
 //activating the buttons
 var numberOfDrumsButtons = document.querySelectorAll('.drum').length;
 
@@ -49,6 +60,7 @@ for (var i = 0; i < numberOfDrumsButtons; i++) {
   document.querySelectorAll('.drum')[i].addEventListener('click', function () {
     var buttonInnerHTML = this.innerHTML;
     clickTheDrums(buttonInnerHTML);
+    animatingButton(buttonInnerHTML);
   });
 }
 
@@ -57,4 +69,5 @@ for (var i = 0; i < numberOfDrumsButtons; i++) {
 document.addEventListener('keydown', function (event) {
   var pressedKey = event.key;
   clickTheDrums(pressedKey);
+  animatingButton(pressedKey);
 });
